@@ -1,5 +1,8 @@
 package com.example.casestudymodul4nhom2.model.User;
 
+import com.example.casestudymodul4nhom2.model.Entity.Cart;
+import com.example.casestudymodul4nhom2.model.Entity.Comment;
+import com.example.casestudymodul4nhom2.model.Entity.Compound;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,6 +27,17 @@ public class AppUser {
     private String avatar;
     @ManyToOne
     private AppRole roll;
+
+    @OneToOne(mappedBy = "appUser",cascade = CascadeType.ALL)
+    private Cart cart;
+
+    @OneToOne(mappedBy = " AppUser",cascade = CascadeType.ALL)
+    private Comment comment;
+
+
+
+
+
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
