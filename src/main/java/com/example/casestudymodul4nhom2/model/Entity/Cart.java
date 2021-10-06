@@ -12,11 +12,12 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
 
-    @OneToMany(targetEntity = Product.class,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
     private List<Product> productList;
 
     @OneToOne(mappedBy = "cart",cascade = CascadeType.ALL)

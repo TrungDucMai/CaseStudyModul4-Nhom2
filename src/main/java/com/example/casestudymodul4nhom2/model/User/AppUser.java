@@ -31,7 +31,7 @@ public class AppUser {
     @OneToOne(mappedBy = "appUser",cascade = CascadeType.ALL)
     private Cart cart;
 
-    @OneToOne(mappedBy = " AppUser",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "AppUser",cascade = CascadeType.ALL)
     private Comment comment;
 
 
