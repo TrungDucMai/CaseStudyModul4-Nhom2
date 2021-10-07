@@ -17,7 +17,7 @@ public class Cart {
     @JoinColumn(name = "user_id")
     private AppUser appUser;
 
-    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Product.class,cascade = CascadeType.ALL)
     private List<Product> productList;
 
     @OneToOne(mappedBy = "cart",cascade = CascadeType.ALL)

@@ -36,9 +36,6 @@ public class AppUser {
 
 
 
-
-
-
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority(roll.getAuthority()));

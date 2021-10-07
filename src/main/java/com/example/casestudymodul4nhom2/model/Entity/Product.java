@@ -15,6 +15,7 @@ public class Product {
     private String name;
     private double price;
     private int quantity;
+    private int sellNumber;
     private String description;
     private String category;
     @ManyToOne
@@ -25,10 +26,10 @@ public class Product {
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Compound.class, cascade = CascadeType.ALL)
     private List<Compound> compoundList;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
 

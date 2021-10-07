@@ -1,11 +1,13 @@
 package com.example.casestudymodul4nhom2.service;
 
+import com.example.casestudymodul4nhom2.model.User.AppRole;
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import com.example.casestudymodul4nhom2.repository.IAppUserRepo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.List;
 @Service
 public class AppUserService {
@@ -48,6 +50,13 @@ public class AppUserService {
             }
         }
         return false;
+    }
+    public Iterable<AppUser> findUserByRole(AppRole role) {
+        return appUserRepository.myUserQuery(role);
+    }
+
+    public Iterable<AppUser> findSellerByRole(AppRole role) {
+        return appUserRepository.mySellerQuery(role);
     }
 
 }

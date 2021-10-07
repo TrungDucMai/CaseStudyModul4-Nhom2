@@ -46,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/rest/login**").permitAll();
         http.antMatcher("/rest/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers("/rest/users").access("hasRole('ROLE_ADMIN')").and().authorizeRequests()
-                .antMatchers("/rest/").access("hasRole('ROLE_SELLER')").and().authorizeRequests()
-                .antMatchers("/rest").access("hasRole('ROLE_USER')")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").and().authorizeRequests()
+                .antMatchers("/seller/**").access("hasRole('ROLE_SELLER')").and().authorizeRequests()
+                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
                 .and()
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
