@@ -58,5 +58,4 @@ public class AppUserService {
     public Iterable<AppUser> findSellerByRole(AppRole role) {
         return appUserRepository.mySellerQuery(role);
     }
-
 }

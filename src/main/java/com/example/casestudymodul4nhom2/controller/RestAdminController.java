@@ -59,6 +59,8 @@ public class RestAdminController {
     }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<UserRespo> login(HttpServletRequest request, @RequestBody AppUser user) {
+        AppUser appUser = userService.loadUserByUsername(user.getUsername());
+        Long id = appUser.getId();
         String result = "";
         HttpStatus httpStatus = null;
         try {
@@ -73,7 +75,7 @@ public class RestAdminController {
             result = "Server Error";
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        UserRespo userRespo = new UserRespo(result,user.getUsername(),user.getAvatar());
+        UserRespo userRespo = new UserRespo(result,id,user.getUsername(),user.getAvatar());
         return new ResponseEntity<UserRespo>(userRespo, httpStatus);
     }
 
