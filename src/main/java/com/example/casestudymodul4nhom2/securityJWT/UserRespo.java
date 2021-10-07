@@ -5,10 +5,13 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
+
 public class UserRespo {
+    private Long id;
     String token;
     private String name;
     private String avatar;
+
 
 
 
@@ -34,5 +37,13 @@ public class UserRespo {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.casestudymodul4nhom2.service;
 
+import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import com.example.casestudymodul4nhom2.repository.IAppUserRepo;
@@ -58,5 +59,7 @@ public class AppUserService {
     public Iterable<AppUser> findSellerByRole(AppRole role) {
         return appUserRepository.mySellerQuery(role);
     }
+
+
 
 }

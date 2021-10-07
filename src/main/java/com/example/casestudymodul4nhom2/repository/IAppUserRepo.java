@@ -1,5 +1,6 @@
 package com.example.casestudymodul4nhom2.repository;
 
+import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,5 +19,7 @@ public interface IAppUserRepo extends JpaRepository<AppUser,Long> {
     @Query("select a from AppUser a where a.roll = ?1")
     Iterable<AppUser> myUserQuery(AppRole roll);
 
+//    @Query("select a from Product a where a.appuser.username = ?1")
+//    Iterable<Product> sellerProductQuery (String username);
 
 }
