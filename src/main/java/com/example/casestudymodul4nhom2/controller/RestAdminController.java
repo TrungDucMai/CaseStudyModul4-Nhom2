@@ -82,6 +82,7 @@ public class RestAdminController {
     @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<AppUser>> getUserByRole(@PathVariable Long id) {
         AppRole role = roleService.findById(id).get();
+        System.out.println("â");
         List<AppUser> appUserList = (List<AppUser>) userService.findUserByRole(role);
         return new ResponseEntity<List<AppUser>>(appUserList, HttpStatus.OK);
     }
