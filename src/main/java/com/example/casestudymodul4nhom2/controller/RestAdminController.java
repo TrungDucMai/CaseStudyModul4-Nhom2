@@ -65,6 +65,19 @@ public class RestAdminController {
         return new ResponseEntity<List<AppUser>>(appUserList, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/role/update/{id}", method = RequestMethod.GET)
+    public ResponseEntity<AppUser> lockUser(@PathVariable Long id) {
+        AppUser user = userService.findById(id);
+        userService.delete(id);
+        AppRole role = roleService.findById(4L).get();
+        user.setRoll(role);
+        user.setStatus("da khoa");
+        user.setId(id);
+
+        userService.add(user);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 
 
