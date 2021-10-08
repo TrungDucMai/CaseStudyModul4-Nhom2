@@ -4,6 +4,8 @@ import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import com.example.casestudymodul4nhom2.repository.IProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -45,5 +47,10 @@ public class ProductService implements IProductService{
     @Override
     public Iterable<Product> findAllByPriceBetween(double lowestPrice, double highestPrice) {
         return productRepo.findAllByPriceBetween(lowestPrice,highestPrice);
+    }
+
+    @Override
+    public Page<Product> findAll(Pageable pageable) {
+        return productRepo.findAll(pageable);
     }
 }
