@@ -23,10 +23,10 @@ public interface IAppUserRepo extends JpaRepository<AppUser,Long> {
     @Query("select a from AppUser a where a.roll = ?1")
     Iterable<AppUser> myUserQuery(AppRole roll);
 
-    @Transactional
-    @Modifying
-    @Query(value = "UPDATE AppUser a SET a.roll = ?1 , a.status = ?2 WHERE a.id = ?3",nativeQuery = true)
-    void lockUser(AppRole role, String status, Long id);
+//    @Transactional
+//    @Modifying
+//    @Query(value = "UPDATE AppUser a SET a.roll = ?1 , a.status = ?2 WHERE a.id = ?3",nativeQuery = true)
+//    void lockUser(AppRole role, String status, Long id);
 
 //    @Query(value = "UPDATE Users u set EMAIL_VERIFICATION_STATUS =?1 where u.USER_ID = ?2",
 //            nativeQuery = true)

@@ -58,8 +58,8 @@ public class AppUserService {
     public Iterable<AppUser> findSellerByRole(AppRole role) {
         return appUserRepository.mySellerQuery(role);
     }
-    public void lockUser(AppRole role, String status, Long id){
-        appUserRepository.lockUser(role, status, id);
-    }
+//    public void lockUser(AppRole role, String status, Long id){
+//        appUserRepository.lockUser(role, status, id);
+//    }
 
 }
