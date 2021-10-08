@@ -5,15 +5,11 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-
 public class UserRespo {
-    private Long id;
     String token;
+    private Long user_id;
     private String name;
     private String avatar;
-
-
-
 
     public String getToken() {
         return token;
@@ -39,11 +35,11 @@ public class UserRespo {
         this.avatar = avatar;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 }
