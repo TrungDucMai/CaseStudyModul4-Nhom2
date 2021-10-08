@@ -59,7 +59,7 @@ public class AppUserService {
         return appUserRepository.mySellerQuery(role);
     }
 //    public void lockUser(AppRole role, String status, Long id){
-//        appUserRepository.lockUser(role, status, id);
+//        appUserRepository.mySellerQuery(role, status, id);
 //    }
 
 }

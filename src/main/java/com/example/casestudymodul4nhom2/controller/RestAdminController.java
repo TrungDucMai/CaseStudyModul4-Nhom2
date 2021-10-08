@@ -69,6 +69,7 @@ public class RestAdminController {
     @RequestMapping(value = "/role/remove/{id}", method = RequestMethod.GET)
     public ResponseEntity<AppUser> lockUser(@PathVariable Long id) {
         AppUser user = userService.findById(id);
+        userService.delete(id);
         AppRole role = roleService.findById(4L).get();
         user.setRoll(role);
         user.setStatus("da khoa");
