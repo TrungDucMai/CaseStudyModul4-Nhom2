@@ -36,4 +36,13 @@ public class ProductService implements IProductService{
     public Iterable<Product> findProductByUser(AppUser user) {
         return productRepo.sellerProductQuery(user) ;
     }
+    @Override
+    public Iterable<Product> findAllByNameContaining(String name) {
+        return productRepo.findAllByNameContaining(name);
+    }
+
+    @Override
+    public Iterable<Product> findAllByPriceBetween(double lowestPrice, double highestPrice) {
+        return productRepo.findAllByPriceBetween(lowestPrice,highestPrice);
+    }
 }
