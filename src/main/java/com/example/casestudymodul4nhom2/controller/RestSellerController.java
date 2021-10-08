@@ -27,6 +27,17 @@ public class RestSellerController {
 
         List<Product> productList = (List<Product>) productService.findProductByUser(user);
 
-        return new ResponseEntity(productList, HttpStatus.OK);
+        return new ResponseEntity<>(productList, HttpStatus.OK);
+    }
+
+    @PostMapping("/product/save")
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product){
+        productService.save(product);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @DeleteMapping("/product/delete/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable Long id){
+        productService.remove(id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 }
