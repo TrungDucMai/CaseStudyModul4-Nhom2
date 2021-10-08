@@ -57,27 +57,6 @@ public class RestAdminController {
         userService.delete(id);
         return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
     }
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<UserRespo> login(HttpServletRequest request, @RequestBody AppUser user) {
-        AppUser appUser = userService.loadUserByUsername(user.getUsername());
-        Long id = appUser.getId();
-        String result = "";
-        HttpStatus httpStatus = null;
-        try {
-            if (userService.checkLogin(user)) {
-                result = jwtService.generateTokenLogin(user.getUsername());
-                httpStatus = HttpStatus.OK;
-            } else {
-                result = "Wrong userId and password";
-                httpStatus = HttpStatus.BAD_REQUEST;
-            }
-        } catch (Exception ex) {
-            result = "Server Error";
-            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        UserRespo userRespo = new UserRespo(result,id,user.getUsername(),user.getAvatar());
-        return new ResponseEntity<UserRespo>(userRespo, httpStatus);
-    }
 
     @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<AppUser>> getUserByRole(@PathVariable Long id) {
