@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -64,8 +65,12 @@ public class RestAdminController {
         List<AppUser> appUserList = (List<AppUser>) userService.findUserByRole(role);
         return new ResponseEntity<List<AppUser>>(appUserList, HttpStatus.OK);
     }
-
-
+    @RequestMapping(value = "/role/remove/{id}", method = RequestMethod.POST)
+    public ResponseEntity<AppUser> lockUser(@PathVariable Long id) {
+        AppRole role = roleService.findById(4L).get();
+        userService.lockUser(role,"da khoa",id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 
