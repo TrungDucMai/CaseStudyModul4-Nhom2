@@ -11,5 +11,4 @@ public interface IAppUserService extends IGeneralService<AppUser> {
     AppUser getCurrentUser();
 
     Iterable<AppUser> findAppUserByRole();
-
 }

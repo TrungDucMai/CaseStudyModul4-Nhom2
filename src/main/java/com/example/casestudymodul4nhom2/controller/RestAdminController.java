@@ -18,7 +18,8 @@ import java.util.List;
 @RequestMapping("/admin")
 @CrossOrigin(origins = "*")
 public class RestAdminController {
-
+    @Autowired
+    private JwtService jwtService;
     @Autowired
     private AppUserService userService;
     @Autowired
@@ -56,7 +57,6 @@ public class RestAdminController {
         userService.delete(id);
         return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
     }
-
 
     @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<AppUser>> getUserByRole(@PathVariable Long id) {
