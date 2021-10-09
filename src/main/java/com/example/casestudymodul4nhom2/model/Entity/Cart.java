@@ -1,6 +1,7 @@
 package com.example.casestudymodul4nhom2.model.Entity;
 
 import com.example.casestudymodul4nhom2.model.User.AppUser;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,9 +18,11 @@ public class Cart {
     @OneToOne
     @JoinColumn(name = "user_id")
     private AppUser appUser;
+
     private String code;
 
     @OneToMany(targetEntity = Product.class,cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Product> productList;
 
     private LocalDate pickupDate;
