@@ -25,6 +25,7 @@ public class AppUser {
     private String phoneNumber;
     private String address;
     private String avatar;
+    private String status;
     @ManyToOne
     private AppRole roll;
 

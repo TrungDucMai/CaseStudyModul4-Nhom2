@@ -41,18 +41,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        // Disable crsf cho đường dẫn /rest/**
-        http.csrf().ignoringAntMatchers("/rest/**");
-        http.authorizeRequests().antMatchers("/rest/login**").permitAll();
-        http.antMatcher("/rest/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
+        http.authorizeRequests().antMatchers("/rest").permitAll();
+        http.antMatcher("/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").and().authorizeRequests()
-                .antMatchers("/seller/**").access("hasRole('ROLE_SELLER')").and().authorizeRequests()
-                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+                .antMatchers("/user/**").access("hasRole('USER')")
                 .and()
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
         http.cors().and().csrf().disable();
+
+
+
+
+
+//        // Disable crsf cho đường dẫn /rest/**
+//        http.csrf().ignoringAntMatchers("/rest/**");
+//        http.authorizeRequests().antMatchers("/rest/login**").permitAll();
+//        http.antMatcher("/rest/**").httpBasic().authenticationEntryPoint(restServicesEntryPoint()).and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
+//                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')").and().authorizeRequests()
+//                .antMatchers("/seller/**").access("hasRole('ROLE_SELLER')").and().authorizeRequests()
+//                .antMatchers("/user/**").access("hasRole('ROLE_USER')")
+//                .and()
+//                .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)
+//                .exceptionHandling().accessDeniedHandler(customAccessDeniedHandler());
+//        http.cors().and().csrf().disable();
     }
 
 }
