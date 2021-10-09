@@ -5,6 +5,7 @@ import com.example.casestudymodul4nhom2.model.Entity.Comment;
 import com.example.casestudymodul4nhom2.model.Entity.Compound;
 import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
