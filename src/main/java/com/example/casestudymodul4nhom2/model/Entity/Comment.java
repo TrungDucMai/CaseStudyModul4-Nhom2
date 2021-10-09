@@ -2,6 +2,7 @@ package com.example.casestudymodul4nhom2.model.Entity;
 
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Product product;
 
 
