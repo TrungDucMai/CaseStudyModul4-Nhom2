@@ -1,7 +1,9 @@
 package com.example.casestudymodul4nhom2.controller;
 
 import com.example.casestudymodul4nhom2.model.Entity.Cart;
+import com.example.casestudymodul4nhom2.model.Entity.Comment;
 import com.example.casestudymodul4nhom2.model.Entity.Product;
+import com.example.casestudymodul4nhom2.service.CommentService;
 import com.example.casestudymodul4nhom2.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -23,6 +26,9 @@ public class RestUserController {
 
     @Autowired
     IProductService productService;
+
+    @Autowired
+    CommentService commentService;
 
     @GetMapping("/showProduct")
     public ResponseEntity<Iterable<Product>> listProduct(){
@@ -80,6 +86,23 @@ public class RestUserController {
         return new ResponseEntity<>(cart, HttpStatus.OK);
 
     }
+
+    @PostMapping("/createComment")
+    public ResponseEntity<Comment> createComment(Comment comment){
+        commentService.createComment(comment);
+        return new ResponseEntity<>( HttpStatus.OK);
+
+    }
+    @GetMapping("/listCommentProduct/{id}")
+    public ResponseEntity<List<Comment>> listCommentProduct(@PathVariable Long id){
+        Product product = productService.findById(id).get();
+         List<Comment>  list = (List<Comment>) commentService.findAllByProduct(product);
+        System.out.println(list.size());
+         return new ResponseEntity<>(list,HttpStatus.OK);
+    }
+
+
+
 
 
 

@@ -1,8 +1,11 @@
 package com.example.casestudymodul4nhom2.controller;
 
+import com.example.casestudymodul4nhom2.model.Entity.Compound;
 import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppUser;
 import com.example.casestudymodul4nhom2.service.AppUserService;
+import com.example.casestudymodul4nhom2.service.CommentService;
+import com.example.casestudymodul4nhom2.service.CompoundService;
 import com.example.casestudymodul4nhom2.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +25,8 @@ public class RestSellerAdmin {
     private IProductService productService;
     @Autowired
     private AppUserService userService;
+    @Autowired
+    private CompoundService compoundService;
 
 
     @GetMapping("/productList/{id}")
@@ -49,6 +54,12 @@ public class RestSellerAdmin {
         Pageable pageable = PageRequest.of(Integer.parseInt(page),3);
         Page<Product> postPage = productService.findAll(pageable);
         return new ResponseEntity<>(postPage,HttpStatus.OK);
+    }
+    @PostMapping("/createCompound")
+    public ResponseEntity<Compound> createCompound(Compound compound){
+        compoundService.save(compound);
+        return new ResponseEntity<>(HttpStatus.OK);
+
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.casestudymodul4nhom2.model.Entity;
 
 import com.example.casestudymodul4nhom2.model.User.AppUser;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,7 +31,7 @@ public class Product {
     @OneToMany(targetEntity = Compound.class, cascade = CascadeType.ALL)
     private List<Compound> compoundList;
 
-    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Comment.class, cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private List<Comment> commentList;
 
 

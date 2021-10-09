@@ -11,6 +11,7 @@ public class Compound {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
     private int percent;
 
     @ManyToOne
