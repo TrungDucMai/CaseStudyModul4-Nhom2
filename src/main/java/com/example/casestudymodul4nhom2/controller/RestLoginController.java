@@ -65,5 +65,11 @@ public class RestLoginController {
 //        UserRespo userRespo = new UserRespo(result,id,user.getUsername(),user.getAvatar());
 //        return new ResponseEntity<UserRespo>(userRespo, httpStatus);
     }
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResponseEntity<String> Register(@RequestBody AppUser appUser){
+        userService.add(appUser);
+        return new ResponseEntity<>("yes",HttpStatus.OK);
+    }
+
 
 }
