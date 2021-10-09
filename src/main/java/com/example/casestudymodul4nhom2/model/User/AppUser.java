@@ -3,7 +3,10 @@ package com.example.casestudymodul4nhom2.model.User;
 import com.example.casestudymodul4nhom2.model.Entity.Cart;
 import com.example.casestudymodul4nhom2.model.Entity.Comment;
 import com.example.casestudymodul4nhom2.model.Entity.Compound;
+import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,6 +28,7 @@ public class AppUser {
     private String phoneNumber;
     private String address;
     private String avatar;
+    private String email;
     private String status;
     @ManyToOne
     private AppRole roll;
@@ -34,6 +38,9 @@ public class AppUser {
 
     @OneToOne(mappedBy = "AppUser",cascade = CascadeType.ALL)
     private Comment comment;
+
+    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+    private List<Product> products;
 
 
 

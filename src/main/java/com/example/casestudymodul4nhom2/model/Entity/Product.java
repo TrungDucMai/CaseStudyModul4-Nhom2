@@ -23,7 +23,6 @@ public class Product {
     private String category;
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private AppUser appuser;
 
     @ManyToOne

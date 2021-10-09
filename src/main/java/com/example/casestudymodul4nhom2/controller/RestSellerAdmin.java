@@ -51,7 +51,7 @@ public class RestSellerAdmin {
 
     @PostMapping("/listPage")
     public ResponseEntity<Page<Product>> listPageProduct(@RequestParam String page){
-        Pageable pageable = PageRequest.of(Integer.parseInt(page),3);
+        Pageable pageable = PageRequest.of(Integer.parseInt(page),5);
         Page<Product> postPage = productService.findAll(pageable);
         return new ResponseEntity<>(postPage,HttpStatus.OK);
     }
