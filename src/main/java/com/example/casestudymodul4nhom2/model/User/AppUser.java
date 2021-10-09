@@ -39,7 +39,6 @@ public class AppUser {
     private Comment comment;
 
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    @JsonManagedReference
     private List<Product> products;
 
 
