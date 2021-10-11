@@ -34,10 +34,10 @@ public class ProductService implements IProductService{
         productRepo.deleteById(id);
     }
 
-    @Override
-    public Iterable<Product> findProductByUser(AppUser user) {
-        return productRepo.sellerProductQuery(user) ;
-    }
+//    @Override
+//    public Iterable<Product> findProductByUser(AppUser user) {
+//        return productRepo.sellerProductQuery(user) ;
+//    }
 
     @Override
     public Iterable<Product> findAllByNameContaining(String name) {

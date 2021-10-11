@@ -30,17 +30,17 @@ public class RestUserController {
     @Autowired
     CommentService commentService;
 
-    @GetMapping("/showProduct")
-    public ResponseEntity<Iterable<Product>> listProduct(){
-        Iterable<Product> listProduct= productService.findAll();
-        return new ResponseEntity<>(listProduct,HttpStatus.OK);
-    }
-
-    @GetMapping("/findAllByName/")
-    public ResponseEntity<Iterable<Product>> listByNameProduct(@RequestParam("name") String name){
-        Iterable<Product> listByNameProduct= productService.findAllByNameContaining(name);
-        return new ResponseEntity<>(listByNameProduct,HttpStatus.OK);
-    }
+//    @GetMapping("/showProduct")
+//    public ResponseEntity<Iterable<Product>> listProduct(){
+//        Iterable<Product> listProduct= productService.findAll();
+//        return new ResponseEntity<>(listProduct,HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/findAllByName/")
+//    public ResponseEntity<Iterable<Product>> listByNameProduct(@RequestParam("name") String name){
+//        Iterable<Product> listByNameProduct= productService.findAllByNameContaining(name);
+//        return new ResponseEntity<>(listByNameProduct,HttpStatus.OK);
+//    }
 
     @GetMapping("/findAllByPrice/")
     public ResponseEntity<Iterable<Product>> listByPriceProduct(@Param("lowestPrice") double lowestPrice, @Param("highestPrice") double highestPrice){
@@ -76,14 +76,16 @@ public class RestUserController {
                 product.setQuantity(quantity);
                 productList.add(product);
             }
+            cart.setProductList(productList);
             httpSession.setAttribute("Than", cart);
         }
-        return new ResponseEntity<>( HttpStatus.OK);
+        Cart cart1 = (Cart) httpSession.getAttribute("Than");
+        return new ResponseEntity<>(cart1, HttpStatus.OK);
     }
     @GetMapping("/showCart")
     public ResponseEntity<Cart> showCart(){
-        Cart cart = (Cart) httpSession.getAttribute("Than");
-        return new ResponseEntity<>(cart, HttpStatus.OK);
+        Cart cart1 = (Cart) httpSession.getAttribute("Than");
+        return new ResponseEntity<>(cart1, HttpStatus.OK);
 
     }
 

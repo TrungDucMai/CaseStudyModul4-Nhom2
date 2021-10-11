@@ -10,6 +10,7 @@ public class UserRespo {
     private Long user_id;
     private String name;
     private String avatar;
+    private String role;
 
     public String getToken() {
         return token;
@@ -41,5 +42,13 @@ public class UserRespo {
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

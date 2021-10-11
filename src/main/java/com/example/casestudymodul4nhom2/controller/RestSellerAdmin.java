@@ -28,18 +28,20 @@ public class RestSellerAdmin {
     @Autowired
     private CompoundService compoundService;
 
-
-    @GetMapping("/productList/{id}")
-    public ResponseEntity<List<Product>> getProductByUsername(@PathVariable Long id) {
-        AppUser user = userService.findById(id);
-
-        List<Product> productList = (List<Product>) productService.findProductByUser(user);
-
-        return new ResponseEntity(productList, HttpStatus.OK);
-    }
+//
+//    @GetMapping("/productList/{id}")
+//    public ResponseEntity<List<Product>> getProductByUsername(@PathVariable Long id) {
+//        AppUser user = userService.findById(id);
+//
+//        List<Product> productList = (List<Product>) productService.findProductByUser(user);
+//
+//        return new ResponseEntity(productList, HttpStatus.OK);
+//    }
 
     @PostMapping("/product/save")
     public ResponseEntity<Product> saveProduct(@RequestBody Product product){
+        AppUser appUser = userService.findById(2L);
+       // product.setAppuser(appUser);
         productService.save(product);
         return new ResponseEntity<>(HttpStatus.OK);
     }

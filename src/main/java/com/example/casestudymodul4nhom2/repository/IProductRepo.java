@@ -13,8 +13,8 @@ public interface IProductRepo extends JpaRepository<Product, Long> {
     @Override
     Page<Product> findAll(Pageable pageable);
 
-    @Query("select a from Product a where a.appuser = ?1")
-    Iterable<Product> sellerProductQuery (AppUser apppUser);
+//    @Query("select a from Product a where a.appuser = ?1")
+//    Iterable<Product> sellerProductQuery (AppUser apppUser);
 
     Iterable<Product> findAllByNameContaining(String name);
 

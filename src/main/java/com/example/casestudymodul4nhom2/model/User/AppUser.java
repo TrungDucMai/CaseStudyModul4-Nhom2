@@ -5,8 +5,7 @@ import com.example.casestudymodul4nhom2.model.Entity.Comment;
 import com.example.casestudymodul4nhom2.model.Entity.Compound;
 import com.example.casestudymodul4nhom2.model.Entity.Product;
 import com.example.casestudymodul4nhom2.model.User.AppRole;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +17,9 @@ import java.util.List;
 
 @Entity
 @Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +37,15 @@ public class AppUser {
 
     @OneToOne(mappedBy = "appUser",cascade = CascadeType.ALL)
     private Cart cart;
+//
+//    @OneToOne(mappedBy = "AppUser",cascade = CascadeType.ALL)
+//    private Comment comment;
+    @OneToMany(targetEntity = Comment.class,cascade = CascadeType.ALL)
+    private List<Comment> commentList;
 
-    @OneToOne(mappedBy = "AppUser",cascade = CascadeType.ALL)
-    private Comment comment;
-
-    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    private List<Product> products;
+//    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Product> products;
 
 
 
